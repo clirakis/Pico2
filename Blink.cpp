@@ -1,3 +1,4 @@
+#include <cstdio>
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 /*
@@ -30,6 +31,11 @@ int main()
    */
   gpio_set_dir(LED_PIN, GPIO_OUT);
 
+  // Initialize serial USB...
+    stdio_init_all();
+
+  printf("Starting program now\n");
+
   for (uint i=0;i<10;i++)
     {
       /*
@@ -39,6 +45,7 @@ int main()
       sleep_ms(500);
       gpio_put(LED_PIN, 0);
       sleep_ms(500);
+      printf("Blink\n");
     }
    return 0;
 }
